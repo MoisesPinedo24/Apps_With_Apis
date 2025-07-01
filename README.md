@@ -20,16 +20,15 @@ Learning Android is easier when every concept lives in its own, bite‑sized app
  
 Each module is a standalone Gradle sub‑project; open 🡒 Run 🡒 explore.
 
----
+ 
 
-## 🛠️ Tech Stack
+##   Tech Stack
 
 - **Kotlin** + Coroutines/Flow  
-- **Retrofit 2.9** • Gson/Moshi  
+- **Retrofit**    • Gson/Moshi  
 - **RecyclerView** • DiffUtil • ListAdapter  
-- **View Binding** & **Data Binding**  
+- **View Binding**  &  Data Binding  
 - **Jetpack**:   ViewModel, LiveData, Navigation  
-- **Hilt** for DI  
-- **Material 3** components
+ 
 
  

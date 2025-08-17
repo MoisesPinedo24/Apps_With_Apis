@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import bmccalculator.BMC_Calculator_Activity
@@ -16,10 +17,10 @@ class MenuActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_menu)
-        val BtnSaludApp = findViewById<Button>(R.id.BtnSaludApp)
-        val BtnBMC_App = findViewById<Button>(R.id.BtnBMC_App)
-        val btnTODO = findViewById<Button>(R.id.btnTODO)
-        val btnSuperHero = findViewById<Button>(R.id.btnSuperHero)
+        val BtnSaludApp = findViewById<ImageButton>(R.id.BtnSaludApp)
+        val BtnBMC_App = findViewById<ImageButton>(R.id.BtnBMC_App)
+        val btnTODO = findViewById<ImageButton>(R.id.btnTODO)
+        val btnSuperHero = findViewById<ImageButton>(R.id.btnSuperHero)
 
 
         BtnSaludApp.setOnClickListener { AppSaludar() }

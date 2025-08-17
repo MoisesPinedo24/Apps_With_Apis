@@ -1,39 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
+    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".MenuActivity">
 
 
-    <Button
-        android:id="@+id/BtnSaludApp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SaludApp"
-    />
+    <androidx.cardview.widget.CardView
+        android:layout_width="160sp"
+        android:layout_height="160sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/todo_background_todo_app"
+        app:cardCornerRadius="15dp">
 
-    <Button
-        android:id="@+id/BtnBMC_App"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="BMC App"
-        android:layout_marginTop="6dp"/>
+        <ImageButton
+            android:id="@+id/BtnSaludApp"
+            android:layout_width="120sp"
+            android:layout_height="120sp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/todo_background_todo_app"
+            android:src="@drawable/ic_launcher_foreground"
+            android:text="SaludApp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnTODO"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="To Do App"
-        android:layout_marginTop="6dp"/>
-    <Button
-        android:id="@+id/btnSuperHero"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Super Hero App"
-        android:layout_marginTop="6dp"/>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/todo_background_todo_app"
+        app:cardCornerRadius="15dp">
+
+        <ImageButton
+            android:id="@+id/BtnBMC_App"
+            android:layout_width="120sp"
+            android:layout_height="120sp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/todo_background_todo_app"
+            android:src="@drawable/ic_launcher_foreground"
+            android:text="SaludApp" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="160sp"
+        android:layout_height="160sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/todo_background_todo_app"
+        app:cardCornerRadius="15dp">
+
+        <ImageButton
+            android:id="@+id/btnTODO"
+            android:layout_width="120sp"
+            android:layout_height="120sp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/todo_background_todo_app"
+
+            android:src="@drawable/ic_launcher_foreground" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/todo_background_todo_app">
+
+        <ImageButton
+            android:id="@+id/btnSuperHero"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="@color/todo_background_todo_app"
+            android:src="@drawable/ic_launcher_foreground"
+            android:text="Super Hero App" />
+
+    </androidx.cardview.widget.CardView>
+
 
 </LinearLayout>

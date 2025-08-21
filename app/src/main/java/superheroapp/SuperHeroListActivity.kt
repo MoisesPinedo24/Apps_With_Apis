@@ -1,5 +1,6 @@
 package superheroapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import superheroapp.DetailSuperHeroActivity.Companion.EXTRA_ID
 
 class SuperHeroListActivity : AppCompatActivity() {
 
@@ -49,7 +51,7 @@ class SuperHeroListActivity : AppCompatActivity() {
         }
         )
 
-        adapter = SuperheroAdapter()
+        adapter = SuperheroAdapter{navigateToDetail(it)}
         binding.rvSuperhero.setHasFixedSize(true)
         binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
         binding.rvSuperhero.adapter = adapter
@@ -86,5 +88,11 @@ class SuperHeroListActivity : AppCompatActivity() {
             .build()
     }
 
+
+    private fun navigateToDetail(id:String){
+        val intent = Intent(this, DetailSuperHeroActivity::class.java)
+        intent.putExtra(EXTRA_ID, id)
+        startActivity(intent)
+    }
 }
 

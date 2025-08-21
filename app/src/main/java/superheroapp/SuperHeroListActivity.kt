@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appbodymassindexcalculator_xml.R
 import com.example.appbodymassindexcalculator_xml.databinding.ActivitySuperHeroListBinding
 import kotlinx.coroutines.CoroutineScope
@@ -22,6 +23,8 @@ class SuperHeroListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySuperHeroListBinding
     private lateinit var retrofit: Retrofit
+
+    private lateinit var adapter: SuperheroAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +48,12 @@ class SuperHeroListActivity : AppCompatActivity() {
 
         }
         )
+
+        adapter = SuperheroAdapter()
+        binding.rvSuperhero.setHasFixedSize(true)
+        binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
+        binding.rvSuperhero.adapter = adapter
+
     }
 
     private fun searchByName(query: String) {
@@ -58,6 +67,7 @@ class SuperHeroListActivity : AppCompatActivity() {
                 if (response != null){
                     Log.i("aristidevs", response.toString())
                     runOnUiThread {
+                        adapter.updateList(response.superheroes)
                         binding.progressBar.isVisible = false
                     }
                 }

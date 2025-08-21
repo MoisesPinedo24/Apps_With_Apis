@@ -7,6 +7,11 @@ import com.example.appbodymassindexcalculator_xml.R
 
 class SuperheroAdapter (var superheroList: List<SuperheroItemResponse> = emptyList()) :
     RecyclerView.Adapter<SuperheroViewHolder>() {
+
+    fun updateList(List: List<SuperheroItemResponse>)    {
+        superheroList = List
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {
         return SuperheroViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_superhero, parent, false))

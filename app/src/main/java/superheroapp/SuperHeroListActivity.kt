@@ -64,7 +64,7 @@ class SuperHeroListActivity : AppCompatActivity() {
             if (myResponse.isSuccessful) {
                 Log.i("aristidevs", "funciona:)")
                 val response: SuperHeroDataResponse? = myResponse.body()
-                if (response != null){
+                if (response != null) {
                     Log.i("aristidevs", response.toString())
                     runOnUiThread {
                         adapter.updateList(response.superheroes)

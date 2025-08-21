@@ -10,6 +10,7 @@ class SuperheroAdapter (var superheroList: List<SuperheroItemResponse> = emptyLi
 
     fun updateList(List: List<SuperheroItemResponse>)    {
         superheroList = List
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {

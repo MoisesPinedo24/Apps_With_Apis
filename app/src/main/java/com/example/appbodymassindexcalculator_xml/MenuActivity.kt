@@ -23,10 +23,12 @@ class MenuActivity : AppCompatActivity() {
         val btnSuperHero = findViewById<ImageButton>(R.id.btnSuperHero)
 
 
+
         BtnSaludApp.setOnClickListener { AppSaludar() }
         BtnBMC_App.setOnClickListener { AppBMC() }
         btnTODO.setOnClickListener { navigatetoTodoApp() }
         btnSuperHero.setOnClickListener { navigateSuperHeroApp() }
+
 
     }
 
@@ -46,6 +48,8 @@ class MenuActivity : AppCompatActivity() {
     private fun navigateSuperHeroApp() {
         nextApp(SuperHeroListActivity::class.java)
     }
+
+
 
     private fun <T> nextApp(newActivity: Class<T>) {
         val intent = Intent(this, newActivity)

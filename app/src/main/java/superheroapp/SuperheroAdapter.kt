@@ -1,5 +1,6 @@
 package superheroapp
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ class SuperheroAdapter(
     fun updateList(List: List<SuperheroItemResponse>) {
         superheroList = List
         notifyDataSetChanged()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {

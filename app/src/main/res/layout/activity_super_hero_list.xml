@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"/>
 
-    <androidx.appcompat.widget.SearchView
+    <EditText
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

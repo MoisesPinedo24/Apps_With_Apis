@@ -90,6 +90,24 @@
             android:text="Super Hero App" />
 
     </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/todo_background_todo_app">
+
+        <ImageButton
+            android:id="@+id/btnS"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="@color/todo_background_todo_app"
+            android:src="@drawable/ic_launcher_foreground"
+            android:text="Super Hero App" />
+
+    </androidx.cardview.widget.CardView>
 
 
 </LinearLayout>

@@ -3,12 +3,15 @@ package superheroapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appbodymassindexcalculator_xml.R
 import com.example.appbodymassindexcalculator_xml.databinding.ActivitySuperHeroListBinding
@@ -25,6 +28,7 @@ class SuperHeroListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySuperHeroListBinding
     private lateinit var retrofit: Retrofit
+    private lateinit var retrofitCreated: Retrofit
 
     private lateinit var adapter: SuperheroAdapter
 
@@ -34,27 +38,40 @@ class SuperHeroListActivity : AppCompatActivity() {
         binding = ActivitySuperHeroListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         retrofit = getRetrofit()
+        initAdapter()
         initUI()
 
 
     }
 
     private fun initUI() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        /*binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchByName(query.orEmpty())
                 return false
             }
 
             override fun onQueryTextChange(newText: String?) = false
+            adapter.updateList(response.body()?.results)
 
         }
-        )
+        )*/
 
-        adapter = SuperheroAdapter{navigateToDetail(it)}
+
+        binding.searchView.doAfterTextChanged {
+            searchByNameSecondVersion(it.toString())
+        }
+
+
         binding.rvSuperhero.setHasFixedSize(true)
-        binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
         binding.rvSuperhero.adapter = adapter
+
+    }
+
+    private fun initAdapter() {
+        binding.rvSuperhero.layoutManager = LinearLayoutManager(this)
+        adapter = SuperheroAdapter { heroName -> navigateToDetail(heroName)}
+
 
     }
 
@@ -79,6 +96,26 @@ class SuperHeroListActivity : AppCompatActivity() {
         }
     }
 
+    private fun searchByNameSecondVersion(heroName: String) {
+        showProgressBar(true)
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = retrofit.create(ApiService::class.java).getSuperheroes(heroName)
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    runOnUiThread {
+                        adapter.updateList(it.superheroes)
+                        showProgressBar(false)
+                    }
+                }
+            } else {
+                Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun showProgressBar(isVisible: Boolean) {
+        binding.progressBar.isVisible = isVisible
+    }
 
     private fun getRetrofit(): Retrofit {
         return Retrofit
@@ -86,6 +123,7 @@ class SuperHeroListActivity : AppCompatActivity() {
             .baseUrl("https://superheroapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
     }
 
 

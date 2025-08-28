@@ -75,6 +75,7 @@ class SuperHeroListActivity : AppCompatActivity() {
 
     }
 
+
     private fun searchByName(query: String) {
         binding.progressBar.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
@@ -86,7 +87,7 @@ class SuperHeroListActivity : AppCompatActivity() {
                 if (response != null) {
                     Log.i("aristidevs", response.toString())
                     runOnUiThread {
-                        adapter.updateList(response.superheroes)
+                        response.superheroes?.let { adapter.updateList(it) }
                         binding.progressBar.isVisible = false
                     }
                 }
@@ -103,12 +104,13 @@ class SuperHeroListActivity : AppCompatActivity() {
             if (response.isSuccessful) {
                 response.body()?.let {
                     runOnUiThread {
-                        adapter.updateList(it.superheroes)
+                        it.superheroes?.let { it1 -> adapter.updateList(it1) }
                         showProgressBar(false)
                     }
                 }
             } else {
                 Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
+
             }
         }
     }
